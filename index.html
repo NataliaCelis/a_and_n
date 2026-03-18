@@ -1,102 +1,109 @@
----
-layout: default
----
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2 Months</title>
-    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-</head>
-<body>
-    <div class="stars-container" id="starsContainer"></div>
-    <div id="asteroid-belt"></div>
+const starContainer = document.getElementById('starsContainer');
+const asteroidBelt = document.getElementById('asteroid-belt');
 
-    <main class="content">
-        <header class="fade-in">
-            <div class="header-icon">🚀</div>
-            <h1>To Lemon</h1>
-            <div class="counter-box">
-                <p>The universe aligned...</p>
-                <div class="time-units">
-                    <span id="days">0</span>d <span id="hours">0</span>h <span id="mins">0</span>m <span id="secs">0</span>s
-                </div>
-                <p>ago and counting! 💖</p>
-            </div>
-        </header>
+function createSpace() {
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 3 + 'px';
+        star.style.width = size; star.style.height = size;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+        starContainer.appendChild(star);
+    }
 
-        <section class="glass-card fade-in">
-            <h2 class="cursive-title">The Great Boyfriend Jar</h2>
-            <p>Tap the jar to see a tiny reason why I think you're the best.</p>
-            <div class="jar-wrapper" onclick="pullGratitude()">
-                <div class="jar">🫙</div>
-                <div id="gratitude-note" class="note-popup">Tap me!</div>
-            </div>
-        </section>
+    for (let i = 0; i < 10; i++) {
+        const ast = document.createElement('div');
+        ast.className = 'asteroid';
+        const size = Math.random() * 40 + 20 + 'px';
+        ast.style.width = size; ast.style.height = size;
+        ast.style.left = Math.random() * 100 + 'vw';
+        ast.style.top = Math.random() * 100 + 'vh';
+        ast.style.opacity = Math.random() * 0.5;
+        ast.style.animationDuration = Math.random() * 60 + 30 + 's';
+        asteroidBelt.appendChild(ast);
+    }
 
-        <section class="glass-card fade-in">
-            <h2 class="cursive-title">A Note for You</h2>
-            <p class="letter-body">[INSERT LATER :D]</p>
-            <p class="signature">- Natalia</p>
-        </section>
+    setInterval(() => {
+        const s = document.createElement('div');
+        s.className = 'shooting-star';
+        s.style.top = Math.random() * 50 + '%';
+        s.style.left = '-10%';
+        s.style.animationDuration = '2s';
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 2000);
+    }, 4000);
+}
+createSpace();
 
-        <section class="glass-card fade-in">
-            <h2 class="pink-text">Favorite Memories</h2>
-            <ul class="memory-list">
-                <li>Playing guitar for me on Valentine's Day</li>
-                <li>The 50-hour insane date</li>
-                <li>"Dancing" to the string lights at the Botanical Gardens</li>
-                <li>Our stargazing date</li>
-                <li>Eating sushi with you <3</li>
-            </ul>
-        </section>
+const boyfriendReasons = [
+    "The way you always make sure I’m on the inside of the sidewalk",
+    "How our dates somehow last forever but still feel too short",
+    "You always plan elaborate dates <3",
+    "The way you play guitar and piano",
+    "You remembering the tiniest details about me",
+    "How you match my energy",
+    "Your curls always look perfect",
+    "How you’re always down for whatever",
+    "The speakeasy and how thoughtful that whole night was",
+    "That improv experience that made no sense but was still fun because it was with you",
+    "How you make even the most random moments feel important",
+    "Doing pottery together and figuring it out as we go",
+    "All the food spots you’ve shown me that I never would’ve found on my own",
+    "How you plan things so thoughtfully",
+    "How you make me feel taken care of",
+    "The way you notice little things about me that I don’t even say out loud",
+    "How easy it is to be fully myself around you",
+    "The way you make everything feel lighter when I’m stressed",
+    "How lucky I feel that we met when we did"
+];
 
-        <h2 class="section-heading">Memories in Orbit</h2>
-        <div class="mobile-carousel">
-            <div class="carousel-slide"><img src="pics/3B46AF60-BCA3-42C5-9795-7725C35B638C.PNG" alt="Memory 1"></div>
-            <div class="carousel-slide"><img src="pics/73DA8541-605C-4269-A02F-19150AA30D08.JPG" alt="Memory 2"></div>
-            <div class="carousel-slide"><img src="pics/A8682974-8555-442B-8CB3-479376CB9CA6.jpg" alt="Memory 3"></div>
-            <div class="carousel-slide"><img src="pics/IMG_0037.JPG" alt="Memory 4"></div>
-            <div class="carousel-slide"><img src="pics/IMG_0045.JPG" alt="Memory 5"></div>
+function pullGratitude() {
+    const note = document.getElementById('gratitude-note');
+    note.innerText = boyfriendReasons[Math.floor(Math.random() * boyfriendReasons.length)];
+    note.classList.add('show');
+    confetti({ particleCount: 30, spread: 50, colors: ['#ffb7ce', '#fff44f'] });
+}
 
-            <div class="carousel-slide"><img src="pics/IMG_0204.JPG" alt="Memory 1"></div>
-            <div class="carousel-slide"><img src="pics/IMG_0208.jpg" alt="Memory 2"></div>
-            <div class="carousel-slide"><img src="pics/IMG_0833.HEIC" alt="Memory 3"></div>
-            <div class="carousel-slide"><img src="pics/IMG_0867.heic" alt="Memory 4"></div>
-            <div class="carousel-slide"><img src="pics/IMG_0880.HEIC" alt="Memory 5"></div>
+const noBtn = document.getElementById('noBtn');
+noBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+    noBtn.style.zIndex = '1000';
+});
 
-            <div class="carousel-slide"><img src="pics/IMG_1322.HEIC" alt="Memory 1"></div>
-            <div class="carousel-slide"><img src="pics/MG_1333.PNG" alt="Memory 2"></div>
-            <div class="carousel-slide"><img src="pics/IMG_3111.HEIC" alt="Memory 3"></div>
-            <div class="carousel-slide"><img src="pics/IMG_3411.HEIC" alt="Memory 4"></div>
-            <div class="carousel-slide"><img src="pics/IMG_3628.HEIC" alt="Memory 5"></div>
-            <div class="carousel-slide"><img src="pics/IMG_4657.HEIC" alt="Memory 5"></div>
-        </div>
+function startPhotoRain() {
+    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const img = document.createElement('img');
+            img.src = "lol.heic"; 
+            img.className = 'rain-item';
+            img.style.left = Math.random() * 90 + 'vw';
+            img.style.width = (Math.random() * 80 + 80) + 'px';
+            img.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(img);
+            setTimeout(() => img.remove(), 4000);
+        }, i * 200);
+    }
+}
 
-        <section class="glass-card fade-in">
-            <div class="secret-tag">TOP SECRET DATE</div>
-            <h3>Your presence is required.</h3>
-            <p>📅 March 31st @ 6:30 PM | 👔 Attire: TBD</p>
-            <div class="button-row">
-                <button id="yesBtn" class="btn yes-btn" onclick="sayYes()">Mission Accepted! 👨‍🚀</button>
-                <button id="noBtn" class="btn no-btn">I can't make it :(</button>
-            </div>
-        </section>
+const metDate = new Date("November 6, 2025 18:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const d = now - metDate;
+    document.getElementById('days').innerText = Math.floor(d / 86400000);
+    document.getElementById('hours').innerText = Math.floor((d % 86400000) / 3600000);
+    document.getElementById('mins').innerText = Math.floor((d % 3600000) / 60000);
+    document.getElementById('secs').innerText = Math.floor((d % 60000) / 1000);
+}, 1000);
 
-        <button class="btn surprise-btn" onclick="startPhotoRain()">CLICK FOR A SURPRISE! 🍋🎁</button>
-    </main>
-
-    <div id="successOverlay" class="overlay">
-        <div class="overlay-content">
-            <h1>YAY! 💖</h1>
-            <p>It's a date! Can't wait, Lemon!!</p>
-            <button class="btn yes-btn" onclick="document.getElementById('successOverlay').style.display='none'">Back to Site</button>
-        </div>
-    </div>
-
-    <script src="{{ '/script.js' | relative_url }}"></script>
-</body>
-</html>
+function sayYes() {
+    document.getElementById('successOverlay').style.display = 'flex';
+    confetti({ particleCount: 300, spread: 180 });
+}
