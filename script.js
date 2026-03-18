@@ -86,49 +86,28 @@ noBtn.addEventListener('click', () => {
 });
 
 const boyfriendReasons = [
-
     "The way you always make sure I’m on the inside of the sidewalk",
-
     "How our dates somehow last forever but still feel too short",
-
     "You always plan elaborate dates <3",
-
     "The way you play guitar and piano",
-
     "You remembering the tiniest details about me",
-
     "How you match my energy",
-
     "Your curls always look perfect",
-
     "How you’re always down for whatever",
-
     "The speakeasy and how thoughtful that whole night was",
-
     "That improv experience that made no sense but was still fun because it was with you",
-
     "How you make even the most random moments feel important",
-
     "Doing pottery together and figuring it out as we go",
-
     "All the food spots you’ve shown me that I never would’ve found on my own",
-
     "How you plan things so thoughtfully",
-
     "How you make me feel taken care of",
-
     "The way you notice little things about me that I don’t even say out loud",
-
     "How easy it is to be fully myself around you",
-
     "The way you make everything feel lighter when I’m stressed",
-
-    "How lucky I feel that we met when we did"
-
+    "How lucky I feel that we met when we did",
     "The way you subconsciously reach for my hand",
     "The way you care about doing things right",
     "The way you smile when you’re proud of something"
-
 ];
 
 function pullGratitude() {
@@ -155,7 +134,6 @@ function sayYes() {
 }
 
 function startPhotoRain() {
-    // This triggers the confetti blast
     confetti({ 
         particleCount: 150, 
         spread: 70, 
@@ -163,22 +141,15 @@ function startPhotoRain() {
         colors: ['#ffb7ce', '#fff44f'] 
     });
 
-    // This makes the actual images fall
     for (let i = 0; i < 20; i++) {
         setTimeout(() => {
             const img = document.createElement('img');
-            
-            
             img.src = "pics/lol.png"; 
-            
             img.className = 'rain-item';
             img.style.left = Math.random() * 90 + 'vw';
             img.style.width = (Math.random() * 80 + 80) + 'px';
             img.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            
             document.body.appendChild(img);
-            
-            // Removes the image after it falls so the site doesn't get laggy
             setTimeout(() => img.remove(), 4000);
         }, i * 200);
     }
