@@ -4,87 +4,288 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2 Months</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Dancing+Script:wght@600&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --space-black: #05070a;
+            --lemon-pink: #ffb7ce;
+            --star-white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--space-black);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym1.cur'), auto;
+        }
+
+        /* --- WHIMSICAL BACKGROUND --- */
+        .stars-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            overflow: hidden;
+        }
+
+        /* Twinkling Stars */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Moving Planets */
+        .planet {
+            position: fixed;
+            border-radius: 50%;
+            z-index: -1;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+            animation: float linear infinite;
+        }
+        .p1 { width: 120px; height: 120px; background: radial-gradient(circle at 30% 30%, #ffb7ce, #ff4d4d); top: 10%; left: -50px; animation-duration: 40s; }
+        .p2 { width: 80px; height: 80px; background: radial-gradient(circle at 30% 30%, #a5d4ff, #243aff); bottom: 10%; right: -30px; animation-duration: 35s; }
+
+        @keyframes float {
+            0% { transform: translate(0,0) rotate(0deg); }
+            50% { transform: translate(100px, 50px) rotate(180deg); }
+            100% { transform: translate(0,0) rotate(360deg); }
+        }
+
+        /* --- CONTENT STYLING --- */
+        .content {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            z-index: 10;
+        }
+
+        h1 { font-size: 5rem; color: var(--lemon-pink); text-shadow: 0 0 20px #ffb7ce; margin-bottom: 10px; }
+        
+        .counter-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 50px;
+            border: 2px solid var(--lemon-pink);
+            margin-bottom: 50px;
+        }
+        .time-units span { font-size: 2.5rem; color: var(--lemon-pink); font-weight: bold; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 40px;
+            width: 80%;
+            margin: 30px 0;
+            transition: transform 0.3s;
+        }
+        .glass-card:hover { transform: scale(1.02); }
+
+        /* --- INTERACTIVE CAROUSEL --- */
+        .carousel-container {
+            width: 100vw;
+            overflow: hidden;
+            padding: 50px 0;
+        }
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+        .carousel-item { width: 250px; margin: 0 20px; }
+        .carousel-item img {
+            width: 100%; border-radius: 20px; 
+            border: 4px solid var(--lemon-pink);
+            box-shadow: 0 0 20px var(--lemon-pink);
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            transition: 0.3s;
+            margin: 10px;
+        }
+        .surprise-btn { background: #ffd700; color: #000; box-shadow: 0 0 15px #ffd700; }
+        .yes-btn { background: var(--lemon-pink); color: #000; }
+        .no-btn { background: transparent; color: white; border: 1px solid white; position: relative; }
+
+        /* --- RAIN EFFECT --- */
+        .rain-item {
+            position: fixed;
+            top: -100px;
+            z-index: 1000;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; align-items: center;
+            justify-content: center; z-index: 2000;
+        }
+
+        .memory-list { text-align: left; list-style: none; padding: 0; }
+        .memory-list li { margin: 15px 0; font-size: 1.2rem; }
+    </style>
 </head>
 <body>
-    <div class="stars-bg"></div>
-    <div class="shooting-star"></div>
-    <div class="planet p-1"></div>
-    <div class="planet p-2"></div>
-    <div class="planet p-3"></div>
 
-    <main class="content-wrapper">
-        <header class="fade-in">
-            <div class="floating-astro">🚀</div>
-            <h1 class="main-title">To Lemon</h1>
-            <div id="counter" class="counter-box">
+    <div class="stars-container" id="starsContainer"></div>
+    <div class="planet p1"></div>
+    <div class="planet p2"></div>
+
+    <main class="content">
+        <header>
+            <div style="font-size: 4rem; animation: float 3s ease-in-out infinite;">🚀</div>
+            <h1>To Lemon</h1>
+            <div class="counter-box">
                 <p>We met...</p>
                 <div class="time-units">
-                    <span id="days">0</span>d <span id="hours">0</span>h <span id="minutes">0</span>m <span id="seconds">0</span>s
+                    <span id="days">0</span>d <span id="hours">0</span>h <span id="mins">0</span>m <span id="secs">0</span>s
                 </div>
                 <p>ago and counting! ✨</p>
             </div>
         </header>
 
-        <section class="letter-section fade-in">
-            <div class="glass-card">
-                <h2 class="cursive-head">A Note for You</h2>
-                <p class="letter-text">[INSERT LATER :D]</p>
-                <p class="signature">- Natalia</p>
-            </div>
+        <button class="btn surprise-btn" onclick="startPhotoRain()">CLICK HERE FOR A SURPRISE! 🎁</button>
+
+        <section class="glass-card">
+            <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem;">A Note for You</h2>
+            <p style="font-size: 1.3rem;">[INSERT LATER :D]</p>
+            <p style="text-align: right; color: var(--lemon-pink);">- Natalia</p>
         </section>
 
-        <section class="memories-section fade-in">
-            <div class="glass-card">
-                <h2 class="section-title">Favorite Memories</h2>
-                <p class="subtitle">Too many to count, but my favorites are...</p>
-                <ul class="memory-list">
-                    <li>Playing guitar for me on Valentine's Day</li>
-                    <li>The 50-hour insane date</li>
-                    <li>Atlanta Botanical Gardens “dancing” to the moving string lights</li>
-                    <li>Stargazing date</li>
-                    <li>Eating sushi with you <3</li>
-                </ul>
-            </div>
+        <section class="glass-card">
+            <h2 style="color: var(--lemon-pink);">Favorite Memories</h2>
+            <ul class="memory-list">
+                <li>🎸 Playing guitar for me on Valentine's Day</li>
+                <li>⏳ The 50-hour insane date</li>
+                <li>💃 "Dancing" to the moving string lights</li>
+                <li>🔭 Stargazing date</li>
+                <li>🍣 Eating sushi with you <3</li>
+            </ul>
         </section>
 
-        <section class="gallery-section fade-in">
-            <h2 class="section-title">Us <3</h2>
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400" alt="Space1"></div>
-                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400" alt="Space2"></div>
-                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=400" alt="Space3"></div>
-                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400" alt="Space1-copy"></div>
-                </div>
-            </div>
-        </section>
+        <h2>Us <3</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="https://via.placeholder.com/250x250/ffb7ce/000000?text=Cute+Pic+1"></div>
+                <div class="carousel-item"><img src="https://via.placeholder.com/250x250/ffb7ce/000000?text=Cute+Pic+2"></div>
+                <div class="carousel-item"><img src="https://via.placeholder.com/250x250/ffb7ce/000000?text=Cute+Pic+3"></div>
+                <div class="carousel-item"><img src="https://via.placeholder.com/250x250/ffb7ce/000000?text=Cute+Pic+1"></div> </div>
+        </div>
 
-        <section class="rsvp-section fade-in">
-            <div class="rsvp-card">
-                <span class="top-secret">TOP SECRET DATE</span>
-                <h3>Your presence is required.</h3>
-                <p>📅 <strong>March 31st @ 6:30 PM</strong></p>
-                <p>👔 <strong>Attire:</strong> TBD</p>
-                <div class="button-group">
-                    <button id="yesBtn" class="btn yes">I'll be there!</button>
-                    <button id="noBtn" class="btn no">I can't make it :(</button>
-                </div>
-                <p id="noResponse" class="hidden">Sad... text me to reschedule! :'(</p>
+        <section class="glass-card">
+            <h2 style="font-size: 0.9rem; background: red; display: inline-block; padding: 5px 10px; border-radius: 5px;">TOP SECRET DATE</h2>
+            <h3>Your presence is required.</h3>
+            <p>📅 March 31st @ 6:30 PM | 👔 Attire: TBD</p>
+            <div style="margin-top: 20px;">
+                <button id="yesBtn" class="btn yes-btn" onclick="sayYes()">I'll be there! 👩‍🚀</button>
+                <button id="noBtn" class="btn no-btn">I can't make it :(</button>
             </div>
         </section>
     </main>
 
-    <div id="successOverlay" class="overlay hidden">
-        <div class="success-content">
-            <h1>YAY! 💖</h1>
-            <p>It's a date! Can't wait to see you, Lemon.</p>
-            <button class="btn yes" onclick="closeOverlay()">Close</button>
+    <div id="successOverlay" class="overlay">
+        <div style="text-align: center;">
+            <h1 style="font-size: 5rem;">YAY! 💖</h1>
+            <p style="font-size: 1.5rem;">It's a date! Can't wait to see you, Lemon.</p>
+            <button class="btn yes-btn" onclick="document.getElementById('successOverlay').style.display='none'">Close</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // 1. GENERATE SPARKLING STARS
+        const container = document.getElementById('starsContainer');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+            container.appendChild(star);
+        }
+
+        // 2. COUNT-UP TIMER (Nov 6, 2025 @ 6pm)
+        const metDate = new Date("November 6, 2025 18:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = now - metDate;
+            document.getElementById('days').innerText = Math.floor(d / 86400000);
+            document.getElementById('hours').innerText = Math.floor((d % 86400000) / 3600000);
+            document.getElementById('mins').innerText = Math.floor((d % 3600000) / 60000);
+            document.getElementById('secs').innerText = Math.floor((d % 60000) / 1000);
+        }, 1000);
+
+        // 3. THE "NO" BUTTON RUNS AWAY
+        const noBtn = document.getElementById('noBtn');
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
+
+        // 4. PHOTO RAIN SURPRISE
+        function startPhotoRain() {
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const img = document.createElement('img');
+                    // REPLACE THIS URL with your actual embarrassing photo link!
+                    img.src = "https://via.placeholder.com/100x100?text=UGLY+PIC"; 
+                    img.className = 'rain-item';
+                    img.style.left = Math.random() * 100 + 'vw';
+                    img.style.width = (Math.random() * 100 + 50) + 'px';
+                    img.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(img);
+                    setTimeout(() => img.remove(), 5000);
+                }, i * 200);
+            }
+        }
+
+        function sayYes() {
+            document.getElementById('successOverlay').style.display = 'flex';
+            confetti({ particleCount: 200, spread: 160 });
+        }
+    </script>
 </body>
 </html>
