@@ -20,7 +20,7 @@ body {
 .stars-container {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -3;
+    z-index: -4;
     background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
 }
 
@@ -32,7 +32,7 @@ body {
     width: 2px; height: 2px;
     background: white;
     border-radius: 50%;
-    z-index: -1;
+    z-index: -2;
     animation: twinkle-dust 3s infinite ease-in-out;
 }
 @keyframes twinkle-dust {
@@ -40,37 +40,67 @@ body {
     50% { opacity: 0.8; transform: scale(1.2); }
 }
 
+/* Floating Planets */
+.bg-planet {
+    position: fixed;
+    border-radius: 50%;
+    z-index: -3;
+    opacity: 0.6;
+    animation: slow-drift linear infinite;
+}
+
+@keyframes slow-drift {
+    from { transform: translate(0, 0) rotate(0deg); }
+    to { transform: translate(100px, 100px) rotate(360deg); }
+}
+
 .asteroid {
     position: fixed;
     background: #333;
-    z-index: -2;
-    border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
-    animation: drift linear infinite;
+    z-index: -1;
+    border-radius: 40% 60% 50% 50%;
+    animation: drift-ast linear infinite;
 }
-@keyframes drift {
+@keyframes drift-ast {
     from { transform: rotate(0deg) translate(0,0); }
-    to { transform: rotate(360deg) translate(20px, 20px); }
+    to { transform: rotate(360deg) translate(40px, 40px); }
 }
 
 .shooting-star {
     position: fixed;
-    width: 150px; height: 2px;
+    width: 180px; height: 2px;
     background: linear-gradient(90deg, white, transparent);
     z-index: -1;
-    animation: shoot linear forwards;
+    pointer-events: none;
+    animation: shoot-fast 1.5s linear forwards;
 }
-@keyframes shoot {
-    0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 0; }
+@keyframes shoot-fast {
+    0% { transform: translateX(0) translateY(0) rotate(-35deg); opacity: 0; }
     10% { opacity: 1; }
-    100% { transform: translateX(100vw) translateY(100vh) rotate(-45deg); opacity: 0; }
+    100% { transform: translateX(120vw) translateY(100vh) rotate(-35deg); opacity: 0; }
 }
 
-/* --- LAYOUT --- */
-.content { width: 100%; max-width: 500px; padding: 40px 15px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
+/* --- MOVING HEADER --- */
+.header-icon-container {
+    perspective: 1000px;
+    margin-bottom: 10px;
+}
+.header-icon {
+    font-size: 5rem;
+    display: inline-block;
+    animation: spaceship-float 5s ease-in-out infinite;
+}
+@keyframes spaceship-float {
+    0%, 100% { transform: translateY(0) rotate(5deg); }
+    50% { transform: translateY(-20px) rotate(-5deg); }
+}
+
+/* --- CONTENT --- */
+.content { width: 100%; max-width: 500px; padding: 40px 15px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 10; }
 
 .glass-card { 
-    background: rgba(255,255,255,0.07); 
-    backdrop-filter: blur(10px); 
+    background: rgba(255,255,255,0.08); 
+    backdrop-filter: blur(12px); 
     padding: 25px; 
     border-radius: 30px; 
     margin-bottom: 30px; 
@@ -80,39 +110,24 @@ body {
     text-align: center;
 }
 
+.letter-body { text-align: left; line-height: 1.6; font-size: 1.05rem; white-space: pre-line; }
+
 .counter-box { margin-bottom: 20px; }
 .time-units span { font-size: 2.2rem; color: var(--lemon-pink); font-weight: bold; }
 
 .cursive-title { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--lemon-pink); margin: 10px 0; }
-
 .pink-text { color: var(--lemon-pink); font-size: 1.8rem; margin-bottom: 10px; }
 
-.memory-list { 
-    text-align: left; 
-    padding-left: 10px; 
-    list-style: none; 
-    line-height: 1.8;
-}
+.memory-list { text-align: left; padding-left: 10px; list-style: none; line-height: 1.8; }
 .memory-list li::before { content: "✨ "; }
 
-.mobile-carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    width: 95vw;
-    gap: 15px;
-    padding: 20px 0;
-}
+.mobile-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; width: 95vw; gap: 15px; padding: 20px 0; }
 .carousel-slide { flex: 0 0 80%; scroll-snap-align: center; }
 .carousel-slide img { width: 100%; border-radius: 20px; border: 3px solid var(--lemon-pink); }
 
-.jar-wrapper { font-size: 5rem; cursor: pointer; margin: 20px 0; transition: transform 0.2s; }
-.jar-wrapper:active { transform: scale(0.9); }
-
+.jar-wrapper { font-size: 5rem; cursor: pointer; margin: 20px 0; }
 .note-popup { font-size: 1.1rem; color: var(--lemon-pink); min-height: 50px; opacity: 0; transition: 0.5s; font-style: italic; }
 .note-popup.show { opacity: 1; }
-
-.spotify-container { width: 100%; margin: 20px 0; border-radius: 12px; overflow: hidden; }
 
 .btn { padding: 18px 30px; border-radius: 50px; font-weight: bold; border: none; width: 100%; margin: 10px 0; cursor: pointer; font-family: 'Fredoka', sans-serif; }
 .yes-btn { background: var(--lemon-pink); color: #000; }
