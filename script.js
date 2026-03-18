@@ -3,8 +3,19 @@ const asteroidBelt = document.getElementById('asteroid-belt');
 const spaceDust = document.getElementById('space-dust');
 
 function createSpace() {
-    // 1. Twinkling Space Dust (Tiny stars)
+    // 1. Stars
     for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 3 + 'px';
+        star.style.width = size; star.style.height = size;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+        starContainer.appendChild(star);
+    }
+    // 2. Dust
+    for (let i = 0; i < 100; i++) {
         const dust = document.createElement('div');
         dust.className = 'dust-particle';
         dust.style.left = Math.random() * 100 + '%';
@@ -12,55 +23,50 @@ function createSpace() {
         dust.style.animationDelay = Math.random() * 5 + 's';
         spaceDust.appendChild(dust);
     }
-
-    // 2. Randomized Asteroids
-    for (let i = 0; i < 15; i++) {
+    // 3. Asteroids
+    for (let i = 0; i < 12; i++) {
         const ast = document.createElement('div');
         ast.className = 'asteroid';
         const size = Math.random() * 50 + 20 + 'px';
         ast.style.width = size; ast.style.height = size;
         ast.style.left = Math.random() * 100 + 'vw';
         ast.style.top = Math.random() * 100 + 'vh';
-        ast.style.opacity = Math.random() * 0.4;
         ast.style.animationDuration = Math.random() * 40 + 20 + 's';
-        ast.style.animationDelay = Math.random() * -20 + 's';
         asteroidBelt.appendChild(ast);
     }
-
-    // 3. Constant Shooting Stars
+    // 4. Shooting Stars
     setInterval(() => {
         const s = document.createElement('div');
         s.className = 'shooting-star';
         s.style.top = Math.random() * 80 + '%';
         s.style.left = '-10%';
-        s.style.animationDuration = (Math.random() * 1 + 1) + 's';
         document.body.appendChild(s);
         setTimeout(() => s.remove(), 2000);
-    }, 2500);
+    }, 3000);
 }
 createSpace();
+
+// RSVP Button Prank
 const noBtn = document.getElementById('noBtn');
 let moveCount = 0;
 
-noBtn.addEventListener('click', (e) => {
+noBtn.addEventListener('click', () => {
     moveCount++;
     if (moveCount < 3) {
-        // Move to a random location
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 100);
         noBtn.style.position = 'fixed';
         noBtn.style.left = x + 'px';
         noBtn.style.top = y + 'px';
     } else {
-        // After 3 taps, give up and force a "Yes"
-        alert("ACCESS DENIED: Error 404 - Rejection not found. 🍋");
-        noBtn.innerText = "I'll be there! (Required)";
+        alert("ACCESS DENIED: Try again, Lemon! 🍋");
+        noBtn.innerText = "Okay fine, Yes ofc! 👩‍🚀";
+        noBtn.style.position = "static";
         noBtn.className = "btn yes-btn";
         noBtn.onclick = sayYes;
     }
 });
 
-// 5. Gratitude Jar logic
 const boyfriendReasons = [
     "The way you always make sure I’m on the inside of the sidewalk",
     "How our dates somehow last forever but still feel too short",
@@ -90,4 +96,22 @@ function pullGratitude() {
     confetti({ particleCount: 30, spread: 50, colors: ['#ffb7ce', '#fff44f'] });
 }
 
-// ... (Keep Photo Rain and Timer functions from previous turn)
+const metDate = new Date("November 6, 2025 18:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const d = now - metDate;
+    document.getElementById('days').innerText = Math.floor(d / 86400000);
+    document.getElementById('hours').innerText = Math.floor((d % 86400000) / 3600000);
+    document.getElementById('mins').innerText = Math.floor((d % 3600000) / 60000);
+    document.getElementById('secs').innerText = Math.floor((d % 60000) / 1000);
+}, 1000);
+
+function sayYes() {
+    document.getElementById('successOverlay').style.display = 'flex';
+    confetti({ particleCount: 300, spread: 180 });
+}
+
+function startPhotoRain() {
+    confetti({ particleCount: 150, spread: 70 });
+    // If you have pics/lol.JPG, add rain logic here
+}
