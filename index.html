@@ -1,21 +1,22 @@
+---
+layout: default
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>2 Months</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-
     <div class="stars-container" id="starsContainer"></div>
-    <div class="planet p1"></div>
-    <div class="planet p2"></div>
+    <div id="asteroid-belt"></div>
 
     <main class="content">
-        <header>
+        <header class="fade-in">
             <div class="header-icon">🚀</div>
             <h1>To Lemon</h1>
             <div class="counter-box">
@@ -27,55 +28,62 @@
             </div>
         </header>
 
-        <button class="btn surprise-btn" onclick="startPhotoRain()">CLICK FOR A SURPRISE! 🍋🎁</button>
+        <section class="glass-card fade-in">
+            <h2 class="cursive-title">The Great Boyfriend Jar</h2>
+            <p>Tap the jar to see a tiny reason why I think you're the best.</p>
+            <div class="jar-wrapper" onclick="pullGratitude()">
+                <div class="jar">🫙</div>
+                <div id="gratitude-note" class="note-popup">Tap me!</div>
+            </div>
+        </section>
 
-        <section class="glass-card">
+        <section class="glass-card fade-in">
             <h2 class="cursive-title">A Note for You</h2>
             <p class="letter-body">[INSERT LATER :D]</p>
             <p class="signature">- Natalia</p>
         </section>
 
-        <section class="glass-card">
+        <section class="glass-card fade-in">
             <h2 class="pink-text">Favorite Memories</h2>
             <ul class="memory-list">
                 <li>Playing guitar for me on Valentine's Day</li>
                 <li>The 50-hour insane date</li>
-                <li>Dancing to the moving string lights at the Botanical Gardens</li>
+                <li>"Dancing" to the string lights at the Botanical Gardens</li>
                 <li>Our stargazing date</li>
                 <li>Eating sushi with you <3</li>
             </ul>
         </section>
 
-        <h2 class="section-heading">Us <3</h2>
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <div class="carousel-item"><img src="https://via.placeholder.com/300x400/ffb7ce/000?text=Pic+1"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/300x400/fff44f/000?text=Pic+2"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/300x400/ffb7ce/000?text=Pic+3"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/300x400/fff44f/000?text=Pic+4"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/300x400/ffb7ce/000?text=Pic+1"></div>
-            </div>
+        <h2 class="section-heading">Memories in Orbit</h2>
+        <div class="mobile-carousel">
+            <div class="carousel-slide"><img src="pics/image1.jpg" alt="Memory 1"></div>
+            <div class="carousel-slide"><img src="pics/image2.jpg" alt="Memory 2"></div>
+            <div class="carousel-slide"><img src="pics/image3.jpg" alt="Memory 3"></div>
+            <div class="carousel-slide"><img src="pics/image4.jpg" alt="Memory 4"></div>
+            <div class="carousel-slide"><img src="pics/image5.jpg" alt="Memory 5"></div>
         </div>
 
-        <section class="glass-card">
+        <section class="glass-card fade-in">
             <div class="secret-tag">TOP SECRET DATE</div>
-            <h3 class="rsvp-title">Your presence is required.</h3>
+            <h3>Your presence is required.</h3>
             <p>📅 March 31st @ 6:30 PM | 👔 Attire: TBD</p>
             <div class="button-row">
-                <button id="yesBtn" class="btn yes-btn" onclick="sayYes()">Mission Accepted! 👩‍🚀</button>
+                <button id="yesBtn" class="btn yes-btn" onclick="sayYes()">Mission Accepted! 👨‍🚀</button>
                 <button id="noBtn" class="btn no-btn">I can't make it :(</button>
             </div>
         </section>
+
+        <button class="btn surprise-btn" onclick="startPhotoRain()">CLICK FOR A SURPRISE! 🍋🎁</button>
     </main>
 
     <div id="successOverlay" class="overlay">
         <div class="overlay-content">
             <h1>YAY! 💖</h1>
-            <p>It's a date! Can't wait, Lemon.</p>
+            <p>It's a date! Can't wait, Lemon!!</p>
             <button class="btn yes-btn" onclick="document.getElementById('successOverlay').style.display='none'">Back to Site</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="{{ '/script.js' | relative_url }}"></script>
 </body>
 </html>
