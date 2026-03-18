@@ -10,79 +10,77 @@
 </head>
 <body>
     <div class="stars-bg"></div>
-    <div class="planet planet-1"></div>
-    <div class="planet planet-2"></div>
-    
-    <header class="fade-in centered">
-        <div class="floating-astro">🚀</div>
-        <h1>To Lemon</h1>
-        <div id="counter" class="counter-box">
-            <p>We met...</p>
-            <div class="time-units">
-                <span id="days">0</span>d <span id="hours">0</span>h <span id="minutes">0</span>m <span id="seconds">0</span>s
+    <div class="shooting-star"></div>
+    <div class="planet p-1"></div>
+    <div class="planet p-2"></div>
+    <div class="planet p-3"></div>
+
+    <main class="content-wrapper">
+        <header class="fade-in">
+            <div class="floating-astro">🚀</div>
+            <h1 class="main-title">To Lemon</h1>
+            <div id="counter" class="counter-box">
+                <p>We met...</p>
+                <div class="time-units">
+                    <span id="days">0</span>d <span id="hours">0</span>h <span id="minutes">0</span>m <span id="seconds">0</span>s
+                </div>
+                <p>ago and counting! ✨</p>
             </div>
-            <p>ago and counting! ✨</p>
-        </div>
-    </header>
+        </header>
 
-    <section class="music-section fade-in centered">
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX6mvY9Ypv97v" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </section>
-
-    <section class="letter-section fade-in centered">
-        <div class="glass-card">
-            <h2>A Note for You</h2>
-            <p class="letter-text">
-                [INSERT LATER :D]
-            </p>
-            <p class="signature">- Natalia</p>
-        </div>
-    </section>
-
-    <section class="memories-section fade-in centered">
-        <div class="glass-card">
-            <h2 class="section-title">Favorite Memories</h2>
-            <p class="subtitle">Too many to count, but my favorites are...</p>
-            <ul class="memory-list">
-                <li>Playing guitar for me on Valentine's Day</li>
-                <li>The 50-hour insane date</li>
-                <li>Atlanta Botanical Gardens “dancing” to the moving string lights</li>
-                <li>Stargazing date</li>
-                <li>Eating sushi with you <3</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="gallery-section fade-in centered">
-        <h2>Us <3</h2>
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500" alt="Space"></div>
-                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500" alt="Space"></div>
-                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=500" alt="Space"></div>
-                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500" alt="Space"></div>
+        <section class="letter-section fade-in">
+            <div class="glass-card">
+                <h2 class="cursive-head">A Note for You</h2>
+                <p class="letter-text">[INSERT LATER :D]</p>
+                <p class="signature">- Natalia</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="rsvp-section fade-in centered">
-        <div class="rsvp-card">
-            <span class="top-secret">TOP SECRET DATE</span>
-            <h3>Your presence is required.</h3>
-            <p>📅 <strong>March 31st @ 6:30 PM</strong></p>
-            <p>👔 <strong>Attire:</strong> TBD</p>
-            <div class="button-group">
-                <button id="yesBtn" class="btn yes">I'll be there!</button>
-                <button id="noBtn" class="btn no">I can't make it :(</button>
+        <section class="memories-section fade-in">
+            <div class="glass-card">
+                <h2 class="section-title">Favorite Memories</h2>
+                <p class="subtitle">Too many to count, but my favorites are...</p>
+                <ul class="memory-list">
+                    <li>Playing guitar for me on Valentine's Day</li>
+                    <li>The 50-hour insane date</li>
+                    <li>Atlanta Botanical Gardens “dancing” to the moving string lights</li>
+                    <li>Stargazing date</li>
+                    <li>Eating sushi with you <3</li>
+                </ul>
             </div>
-            <p id="noResponse" class="hidden">Sad... text me to reschedule! :'(</p>
-        </div>
-    </section>
+        </section>
+
+        <section class="gallery-section fade-in">
+            <h2 class="section-title">Us <3</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400" alt="Space1"></div>
+                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400" alt="Space2"></div>
+                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=400" alt="Space3"></div>
+                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400" alt="Space1-copy"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rsvp-section fade-in">
+            <div class="rsvp-card">
+                <span class="top-secret">TOP SECRET DATE</span>
+                <h3>Your presence is required.</h3>
+                <p>📅 <strong>March 31st @ 6:30 PM</strong></p>
+                <p>👔 <strong>Attire:</strong> TBD</p>
+                <div class="button-group">
+                    <button id="yesBtn" class="btn yes">I'll be there!</button>
+                    <button id="noBtn" class="btn no">I can't make it :(</button>
+                </div>
+                <p id="noResponse" class="hidden">Sad... text me to reschedule! :'(</p>
+            </div>
+        </section>
+    </main>
 
     <div id="successOverlay" class="overlay hidden">
         <div class="success-content">
             <h1>YAY! 💖</h1>
-            <p>It's a date! Can't wait to see you, Arsh.</p>
+            <p>It's a date! Can't wait to see you, Lemon.</p>
             <button class="btn yes" onclick="closeOverlay()">Close</button>
         </div>
     </div>
