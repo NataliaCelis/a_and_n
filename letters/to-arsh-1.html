@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2 Months — To Arsh</title>
+    <link rel="stylesheet" href="../shared/space-bg.css">
+    <link rel="stylesheet" href="../styles/kiwi.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="stars-container" id="starsContainer"></div>
+    <div id="space-dust"></div>
+    <div id="planet-layer"></div>
+    <div id="asteroid-belt"></div>
+
+    <main class="content">
+        <a href="../index.html" class="back-link">← Home</a>
+
+        <header class="fade-in">
+            <div class="header-icon-container">
+                <div class="header-icon">🚀</div>
+            </div>
+            <h1>To Arsh</h1>
+            <div class="counter-box">
+                <p>The universe aligned...</p>
+                <div class="time-units">
+                    <span id="days">0</span>d
+                    <span id="hours">0</span>h
+                    <span id="mins">0</span>m
+                    <span id="secs">0</span>s
+                </div>
+                <p>ago and counting!</p>
+            </div>
+        </header>
+
+        <section class="glass-card fade-in">
+            <h2 class="cursive-title">A Note For You</h2>
+            <p class="letter-body">
+Hey Arsh,
+
+Two months feels kind of crazy. It went by so fast, but we've made so many good memories in that time (and since November)
+
+I still think about our first date a lot. We just talked and walked for over five hours. It was so choatic, but I had such a great time. That night made me want to keep seeing you, and I really wondered what this could turn into. Yay to a Hinge success story :)
+
+And then our second date… you singing Pink Pony Club in the car made me realize you were my kind of person. You're always down for whatever, and you always match my energy. I feel like I don't have to hold back around you &lt;3
+
+Valentine's Day was honestly one of my favorite days with you. The whole day was so thoughtful! Your great escape room skills, the delicious Persian food, the bamboo forest hike, the improv experience, the speakeasy with the national park theme, and you playing guitar for me (so so cool). I know you put effort into it, and you do that for all of our dates. Your thoughtfulness is one of my favorite qualities about you. You really take everything into consideration in a way that a lot of people don't.
+
+Your passion for things is another quality that I admire. Whether you're talking about something from your bioinformatics class or any random topic you've been thinking about, you always get really passionate about it. Your eyes literally light up when teaching me things, and it's so fun to learn/listen. I can see why you're a great robotics coach.
+
+Also sidenote but one of my favorite small things is how you pull me closer when you're asleep. I'm not sure if you realize that you're doing it, but it's so cute. It makes me feel really safe :)
+
+Also the food! You've put me on so many good spots. Every time we try something (which is predominantly asian food), it's always so so delicious! Hole in the Wall is amazing, the malatang hot pot place, the Korean food (only the dishes you choose), and all of the dates have been so yummy.
+
+I just really appreciate you. The way you're there for me, the way you think about things, the way you care… you make everything feel easy. I'm really happy we met, and I'm really happy it's you.
+
+Happy two months :)
+            </p>
+            <p class="signature">- Natalia</p>
+        </section>
+
+        <section class="glass-card fade-in">
+            <h2 class="cursive-title">The Great Boyfriend Jar</h2>
+            <p>Tap the jar for a reason why you're the best</p>
+            <div class="jar-wrapper" onclick="pullGratitude()">
+                <div class="jar">🫙</div>
+                <div id="gratitude-note" class="note-popup">Tap me!</div>
+            </div>
+        </section>
+
+        <section class="glass-card fade-in">
+            <h2 class="pink-text">Favorite Memories</h2>
+            <ul class="memory-list">
+                <li>Playing guitar for me on Valentine's Day</li>
+                <li>The 50-hour insane date</li>
+                <li>Atlanta Botanical Gardens "dancing" to lights</li>
+                <li>Our stargazing date</li>
+                <li>Eating sushi with you &lt;3</li>
+            </ul>
+        </section>
+
+        <h2 class="section-heading">Memories</h2>
+        <div class="mobile-carousel">
+            <div class="carousel-slide"><img src="../pics/1.png"  alt="Memory 1"></div>
+            <div class="carousel-slide"><img src="../pics/2.png"  alt="Memory 2"></div>
+            <div class="carousel-slide"><img src="../pics/3.png"  alt="Memory 3"></div>
+            <div class="carousel-slide"><img src="../pics/4.png"  alt="Memory 4"></div>
+            <div class="carousel-slide"><img src="../pics/5.png"  alt="Memory 5"></div>
+            <div class="carousel-slide"><img src="../pics/6.png"  alt="Memory 6"></div>
+            <div class="carousel-slide"><img src="../pics/7.png"  alt="Memory 7"></div>
+            <div class="carousel-slide"><img src="../pics/8.PNG"  alt="Memory 8"></div>
+            <div class="carousel-slide"><img src="../pics/9.JPG"  alt="Memory 9"></div>
+            <div class="carousel-slide"><img src="../pics/10.jpg" alt="Memory 10"></div>
+            <div class="carousel-slide"><img src="../pics/11.JPG" alt="Memory 11"></div>
+            <div class="carousel-slide"><img src="../pics/12.JPG" alt="Memory 12"></div>
+            <div class="carousel-slide"><img src="../pics/13.JPG" alt="Memory 13"></div>
+            <div class="carousel-slide"><img src="../pics/14.jpg" alt="Memory 14"></div>
+            <div class="carousel-slide"><img src="../pics/15.PNG" alt="Memory 15"></div>
+        </div>
+
+        <section class="glass-card fade-in">
+            <div class="secret-tag">TOP SECRET DATE</div>
+            <h3>Your presence is required.</h3>
+            <p>March 31st @ 6:30 PM | Attire: TBD</p>
+            <div class="button-row">
+                <button id="yesBtn" class="btn yes-btn" onclick="sayYes()">Yes ofc!</button>
+                <button id="noBtn" class="btn no-btn">I can't make it :(</button>
+            </div>
+        </section>
+
+        <button class="btn surprise-btn" onclick="startPhotoRain()">CLICK FOR A SURPRISE! 🍋🎁</button>
+    </main>
+
+    <div id="successOverlay" class="overlay">
+        <div class="overlay-content glass-card">
+            <h1>YAY! 💖</h1>
+            <p>It's a date! Can't wait!!</p>
+            <button class="btn yes-btn" onclick="document.getElementById('successOverlay').style.display='none'">Back to Site</button>
+        </div>
+    </div>
+
+    <script src="../shared/space-bg.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Counter
+        const metDate = new Date("November 6, 2025 18:00:00").getTime();
+        setInterval(() => {
+            const d = Date.now() - metDate;
+            document.getElementById('days').innerText  = Math.floor(d / 86400000);
+            document.getElementById('hours').innerText = Math.floor((d % 86400000) / 3600000);
+            document.getElementById('mins').innerText  = Math.floor((d % 3600000) / 60000);
+            document.getElementById('secs').innerText  = Math.floor((d % 60000) / 1000);
+        }, 1000);
+
+        // No button evasion
+        const noBtn = document.getElementById('noBtn');
+        let moveCount = 0;
+        if (noBtn) {
+            noBtn.addEventListener('click', () => {
+                moveCount++;
+                if (moveCount < 3) {
+                    const x = Math.random() * Math.max(0, window.innerWidth - 170);
+                    const y = Math.random() * Math.max(0, window.innerHeight - 80);
+                    noBtn.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:auto;z-index:1500`;
+                } else {
+                    alert("ACCESS DENIED: Try again! 🍋");
+                    noBtn.innerText = "Okay fine, Yes ofc!";
+                    noBtn.style.cssText = 'position:static;width:100%';
+                    noBtn.className = 'btn yes-btn';
+                    noBtn.onclick = sayYes;
+                }
+            });
+        }
+
+        // Gratitude jar
+        const boyfriendReasons = [
+            "The way you always make sure I'm on the inside of the sidewalk",
+            "How our dates somehow last forever but still feel too short",
+            "You always plan elaborate dates <3",
+            "The way you play guitar and piano",
+            "You remembering the tiniest details about me",
+            "How you match my energy",
+            "Your curls always look perfect",
+            "How you're always down for whatever",
+            "The speakeasy and how thoughtful that whole night was",
+            "That improv experience that made no sense but was still fun because it was with you",
+            "How you make even the most random moments feel important",
+            "Doing pottery together and figuring it out as we go",
+            "All the food spots you've shown me that I never would've found on my own",
+            "How you plan things so thoughtfully",
+            "How you make me feel taken care of",
+            "The way you notice little things about me that I don't even say out loud",
+            "How easy it is to be fully myself around you",
+            "The way you make everything feel lighter when I'm stressed",
+            "How lucky I feel that we met when we did",
+            "The way you subconsciously reach for my hand",
+            "The way you care about doing things right",
+            "The way you smile when you're proud of something"
+        ];
+
+        window.pullGratitude = function() {
+            const note = document.getElementById('gratitude-note');
+            if (!note) return;
+            note.classList.remove('show');
+            setTimeout(() => {
+                note.innerText = boyfriendReasons[Math.floor(Math.random() * boyfriendReasons.length)];
+                note.classList.add('show');
+            }, 80);
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 30, spread: 50, colors: ['#ffb7ce', '#fff44f'] });
+            }
+        };
+
+        window.sayYes = function() {
+            const overlay = document.getElementById('successOverlay');
+            if (overlay) overlay.style.display = 'flex';
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 300, spread: 180 });
+            }
+        };
+
+        window.startPhotoRain = function() {
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ffb7ce', '#fff44f'] });
+            }
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const img = document.createElement('img');
+                    img.src = '../pics/lol.png';
+                    img.className = 'rain-item';
+                    img.style.left             = Math.random() * 90 + 'vw';
+                    img.style.width            = (Math.random() * 80 + 80) + 'px';
+                    img.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(img);
+                    setTimeout(() => img.remove(), 4000);
+                }, i * 200);
+            }
+        };
+    });
+    </script>
+</body>
+</html>

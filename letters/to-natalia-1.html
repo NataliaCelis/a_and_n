@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>3 Months — To Natalia</title>
+    <link rel="stylesheet" href="../styles/lemon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Playfair+Display:wght@400;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-bg" id="petalBg"></div>
+
+    <main class="content">
+        <a href="../index.html" class="back-link">← Home</a>
+
+        <header class="fade-in">
+            <div class="header-icon-container">
+                <div class="header-icon">🪷</div>
+            </div>
+            <h1>To Natalia</h1>
+        </header>
+
+        <section class="glass-card fade-in">
+            <h2 class="cursive-title">A Message</h2>
+            <div class="letter-reveal">
+                <p class="letter-body">
+Natalia Celis, I adore you.
+
+I adore the way you smile at me whenever you catch me staring.
+
+I adore the way you celebrate my wins as if it was your own. You jumping up and down when I told you about Google is something I will never forget. To know that I have someone like you truly rooting for me makes me so warm inside.
+
+I adore the way you roll your eyes when I laugh about John Kirakou, showing you my saved reels at Poke and me laughing endlessly was so funny.
+
+I adore the way you sometimes hit me on my chest whenever I say anything extra stupid.
+
+I adore the way you look at me in absolute shock & horror when I try to take a picture of you when you look "chopped" (always cute to me), the 3-months gift exchange was too funny.
+
+I adore the way you look at me intently when I rant about whatever I learnt about in my bioinformatics/origins of life classes or even robotics & aliens. You remember so much about me, my interests, my passions. You truly remember the little things. The VR ISS Tour was soo cool.
+
+I adore the way you have this spark in your eyes when sharing crazy wacky stories you have with your friends while going through your camera roll. I can't believe you actually made tamarind juice (which tasted so good by the way). Also, buffalo buttterrr.
+
+I adore the way you pull on my shirt for a kiss and put your hands around my neck (good thing I taught you this).
+
+I adore the way that you also wanted to travel together and Savannah and the whole Zunzi's arc was so funny. The dolphins were also soo cute. Tybee island 😉
+
+I adore the way that as much as I am building Arsh-GPT for you, you are doing the same with me. You are getting shockingly good at guessing what I am thinking about.
+
+I adore how you latch onto every single word I say, even if it's so incredibly stupid.
+
+I adore the way I can be myself around you.
+
+And this is just a fraction.
+
+Natalia, you truly make me feel seen. And, as you said, to be seen is to be loved. I feel loved by you. Through everything I do, I only hope you feel seen & loved too.
+
+No matter what you do, what you tell me, what you say, what happens; I adore Natalia Celis.
+
+Fortunately or unfortunately, you can't change that.
+                </p>
+                <p class="signature">- Arsh</p>
+                <div class="letter-cover" id="letterCover">
+                    <span class="letter-cover-hint">tap to read</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card fade-in">
+            <h2 class="cursive-title">Next Date Options</h2>
+            <p class="date-section-sub">pick one</p>
+            <div class="date-options" id="dateOptions">
+                <div class="date-option" data-id="cozy">
+                    <span class="date-option-emoji">🕯️</span>
+                    <span class="date-option-label">Cozy & Extra Romantic</span>
+                    <span class="date-option-sub">Awwww vibes</span>
+                </div>
+                <div class="date-option" data-id="cooking">
+                    <span class="date-option-emoji">👨‍🍳</span>
+                    <span class="date-option-label">Me cooking for my lady</span>
+                </div>
+                <div class="date-option" data-id="gokarting">
+                    <span class="date-option-emoji">🏎️</span>
+                    <span class="date-option-label">Gokarting (finally!)</span>
+                </div>
+                <div class="date-option" data-id="drivein">
+                    <span class="date-option-emoji">🎬</span>
+                    <span class="date-option-label">Drive In Movie Night</span>
+                </div>
+                <div class="date-option date-option-sushi" data-id="sushi">
+                    <span class="date-option-emoji">🍣</span>
+                    <span class="date-option-label">Hole in the Wall / Sashimi 🤤</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="heart-photo-section fade-in">
+            <button class="btn heart-btn" id="heartBtn">click for an definitely AMAZING & CUTE photo of you</button>
+        </div>
+
+    </main>
+
+    <div class="sushi-overlay" id="sushiOverlay">
+        <div class="sushi-modal glass-card">
+            <p class="sushi-modal-text">duhh sushi was gonna happen anyways</p>
+            <p class="sushi-modal-sub">pick another option </p>
+            <button class="btn primary-btn" id="sushiClose">:)</button>
+        </div>
+    </div>
+
+    <div class="sushi-overlay" id="notBadOverlay">
+        <div class="sushi-modal glass-card">
+            <p class="sushi-modal-text">See, not that bad right</p>
+            <button class="btn primary-btn" id="notBadClose">obviously not</button>
+        </div>
+    </div>
+
+    <div class="heart-overlay" id="heartOverlay">
+        <div class="heart-fullscreen-wrapper" id="heartFullWrapper">
+            <img id="heartPhoto" src="" alt="cute photo" class="heart-photo-full">
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Letter cover reveal
+        const cover = document.getElementById('letterCover');
+        if (cover) {
+            cover.addEventListener('click', () => {
+                cover.classList.add('fading');
+                cover.addEventListener('transitionend', () => cover.remove(), { once: true });
+            });
+        }
+
+        document.querySelectorAll('.date-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('.date-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+                if (opt.dataset.id === 'sushi') {
+                    document.getElementById('sushiOverlay').classList.add('visible');
+                }
+            });
+        });
+
+        document.getElementById('notBadClose').addEventListener('click', () => {
+            document.getElementById('notBadOverlay').classList.remove('visible');
+        });
+
+        document.getElementById('sushiClose').addEventListener('click', () => {
+            document.getElementById('sushiOverlay').classList.remove('visible');
+            document.querySelectorAll('.date-option').forEach(o => o.classList.remove('selected'));
+        });
+
+        const photos = [
+            '../pics/3_months_arsh/1.jpg',
+            '../pics/3_months_arsh/2.jpg',
+            '../pics/3_months_arsh/3.jpg'
+        ];
+        let photoIndex = 0;
+
+        const heartBtn     = document.getElementById('heartBtn');
+        const heartOverlay = document.getElementById('heartOverlay');
+        const heartPhoto   = document.getElementById('heartPhoto');
+        const heartWrapper = document.getElementById('heartFullWrapper');
+
+        let firstPhoto = true;
+
+        heartBtn.addEventListener('click', () => {
+            heartPhoto.src = photos[photoIndex % photos.length];
+            photoIndex++;
+            heartOverlay.classList.add('visible');
+            heartWrapper.classList.remove('animate');
+            void heartWrapper.offsetWidth;
+            heartWrapper.classList.add('animate');
+            setTimeout(() => {
+                heartOverlay.classList.remove('visible');
+                if (firstPhoto) {
+                    firstPhoto = false;
+                    setTimeout(() => {
+                        document.getElementById('notBadOverlay').classList.add('visible');
+                    }, 400);
+                }
+            }, 2000);
+        });
+
+        const bg = document.getElementById('petalBg');
+        const petals = ['🪷', '🌸', '🌷', '🌺', '🌼'];
+        for (let i = 0; i < 40; i++) {
+            const el = document.createElement('div');
+            el.className = 'floating-petal';
+            el.textContent = petals[Math.floor(Math.random() * petals.length)];
+            el.style.left              = Math.random() * 100 + 'vw';
+            el.style.fontSize          = (Math.random() * 1.8 + 0.7) + 'rem';
+            el.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            el.style.animationDelay    = (Math.random() * 12) + 's';
+            bg.appendChild(el);
+        }
+    });
+    </script>
+</body>
+</html>
